@@ -42,13 +42,27 @@ backend/
 
 # 3. Configuraciones realizadas
 
-- Inicialización de Node.js
-- Configuración de TypeScript
-- Configuración de Prisma ORM
-- Configuración de variables de entorno
-- Configuración de módulos ECMAScript
+Actualmente el proyecto ya cuenta con:
+
+- Configuración inicial de Node.js
+- Configuración TypeScript
+- Configuración Prisma ORM
 - Configuración de conexión MySQL
-- Creación de migraciones Prisma
+- Configuración de variables de entorno
+- Estructura profesional del backend
+- Servidor Express inicial
+- Configuración de ejecución en desarrollo con TSX
+- Configuración de módulos ECMAScript
+
+El backend ya se encuentra preparado para comenzar el desarrollo de:
+
+- Modelos Prisma
+- Controladores
+- Servicios
+- Rutas
+- APIs REST
+- Implementar login y registro
+- Autenticación JWT
 
 ---
 
@@ -62,26 +76,3 @@ Actualmente:
 - El proyecto backend ya está preparado para comenzar el desarrollo de APIs
 
 ---
-
-# 11. Estado actual del backend
-
-Actualmente el proyecto ya cuenta con:
-
-- Configuración inicial de Node.js
-- Configuración TypeScript
-- Configuración Prisma ORM
-- Configuración MySQL
-- Variables de entorno
-- Estructura profesional del backend
-- Servidor Express inicial
-- Configuración de ejecución en desarrollo con TSX
-
-El backend ya se encuentra preparado para comenzar el desarrollo de:
-
-- Modelos Prisma
-- Controladores
-- Servicios
-- Rutas
-- APIs REST
-- Implementar login y registro
-- Autenticación JWT
