@@ -63,12 +63,25 @@ Actualmente:
 
 ---
 
-# 5. Próximos pasos
+# 11. Estado actual del backend
 
-- Crear modelo User
-- Crear servidor Express
+Actualmente el proyecto ya cuenta con:
+
+- Configuración inicial de Node.js
+- Configuración TypeScript
+- Configuración Prisma ORM
+- Configuración MySQL
+- Variables de entorno
+- Estructura profesional del backend
+- Servidor Express inicial
+- Configuración de ejecución en desarrollo con TSX
+
+El backend ya se encuentra preparado para comenzar el desarrollo de:
+
+- Modelos Prisma
+- Controladores
+- Servicios
+- Rutas
+- APIs REST
 - Implementar login y registro
-- Configurar rutas y controladores
-- Implementar autenticación JWT
-
----
+- Autenticación JWT
