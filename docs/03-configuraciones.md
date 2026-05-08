@@ -173,13 +173,151 @@ Actualmente incluye:
 
 ---
 
-# 9. Endpoints funcionales
+
+---
+
+# 9. Implementación de autenticación JWT
+
+## Descripción
+
+Se implementó el sistema de autenticación mediante JSON Web Token (JWT) para permitir el acceso seguro a rutas privadas del backend.
+
+El sistema permite:
+
+- Validar credenciales de usuario
+- Generar tokens JWT
+- Proteger endpoints privados
+- Obtener información del usuario autenticado
+- Validar sesiones seguras
+
+---
+
+# 10. Creación del middleware JWT
+
+## Archivo creado
+
+```txt
+src/middlewares/auth.middleware.ts
+```
+
+### Descripción
+
+Se creó el middleware encargado de proteger rutas privadas del backend.
+
+Funciones principales:
+
+- Leer token desde los headers
+- Validar token JWT
+- Verificar autenticación
+- Denegar acceso no autorizado
+- Adjuntar usuario autenticado al request
+
+---
+
+## Utilizacion en postma
+
+```http
+Authorization: Bearer TOKEN
+```
+
+---
+
+## Respuesta si no existe token
+
+```json
+{
+  "message": "Acceso denegado. Token no proporcionado."
+}
+```
+
+---
+
+## Respuesta si el token es inválido
+
+```json
+{
+  "message": "Token inválido o expirado."
+}
+```
+
+---
+
+# 11. Protección de rutas privadas
+
+## Middleware aplicado
+
+```ts
+authMiddleware
+```
+
+### Descripción
+
+El middleware se implementó en rutas privadas para validar autenticación antes de ejecutar el controlador.
+
+Ejemplo:
+
+```ts
+router.get("/", authMiddleware, getProfile);
+```
+
+### Función del controlador Profile
+
+El controlador `getProfile` se creó para manejar la funcionalidad de perfil del usuario autenticado dentro del backend.
+
+Su función principal en el proyecto será permitir que el sistema identifique quién es el usuario que inició sesión mediante el token JWT y devolver su información de forma segura.
+
+En el proyecto tendrá funciones importantes como:
+
+- Obtener los datos del usuario autenticado
+- Validar que el usuario tenga sesión activa
+- Proteger información privada
+- Permitir acceso únicamente a usuarios autenticados
+- Servir como base para futuras funcionalidades privadas
+
+Este controlador será fundamental porque muchas funcionalidades futuras dependerán del usuario autenticado, por ejemplo:
+
+- Perfil de usuario
+- Edición de perfil
+- Configuraciones de cuenta
+- Panel privado
+- Historial del usuario
+- Roles y permisos
+- Favoritos
+- Publicaciones propias
+- Gestión de datos personales
+
+---
+
+### Proceso que realiza actualmente
+
+El controlador actualmente realiza el siguiente proceso:
+
+1. Leer el usuario autenticado desde el token JWT.
+2. Obtener el `id` del usuario autenticado.
+3. Consultar el usuario en MySQL mediante Prisma.
+4. Retornar únicamente información segura.
+5. Evitar exponer la contraseña.
+6. Manejar errores y accesos no autorizados.
+
+---
+
+# 12. Endpoints funcionales
+
+Actualmente el backend cuenta con endpoints funcionales para validación, autenticación y manejo seguro de usuarios mediante JWT.
+
+---
 
 ## Health Check
 
 ```http
 GET /api/health
 ```
+
+### Descripción
+
+Endpoint utilizado para verificar el correcto funcionamiento de la API.
+
+---
 
 ### Respuesta exitosa
 
@@ -191,11 +329,19 @@ GET /api/health
 
 ---
 
-## Obtener usuarios
+# Obtener usuarios
+
+## Endpoint
 
 ```http
 GET /api/users
 ```
+
+### Descripción
+
+Endpoint encargado de obtener los usuarios registrados en la base de datos mediante Prisma ORM.
+
+---
 
 ### Respuesta exitosa
 
@@ -211,13 +357,29 @@ GET /api/users
 
 ---
 
-## Registrar usuario
+# Registrar usuario
+
+## Endpoint
 
 ```http
 POST /api/users/register
 ```
 
-### Body
+### Descripción
+
+Endpoint encargado del registro de nuevos usuarios.
+
+Funciones implementadas:
+
+- Validación de campos
+- Verificación de email existente
+- Encriptación de contraseña con bcrypt
+- Registro en MySQL mediante Prisma
+- Protección de contraseña en respuestas
+
+---
+
+## Body
 
 ```json
 {
@@ -227,7 +389,9 @@ POST /api/users/register
 }
 ```
 
-### Respuesta exitosa
+---
+
+## Respuesta exitosa
 
 ```json
 {
@@ -240,7 +404,9 @@ POST /api/users/register
 }
 ```
 
-### Respuesta si el usuario ya existe
+---
+
+## Respuesta si el usuario ya existe
 
 ```json
 {
@@ -248,11 +414,142 @@ POST /api/users/register
 }
 ```
 
-### Respuesta en caso de error
+---
+
+## Respuesta en caso de error
 
 ```json
 {
   "message": "Error al registrar usuario"
+}
+```
+
+---
+
+# Login de usuario JWT
+
+## Endpoint
+
+```http
+POST /api/users/login
+```
+
+### Descripción
+
+Endpoint encargado de autenticar usuarios registrados mediante JWT.
+
+Funciones implementadas:
+
+- Validación de email
+- Validación de contraseña
+- Comparación segura con bcrypt
+- Generación de token JWT
+- Retorno del usuario autenticado
+- Protección de credenciales sensibles
+
+---
+
+## Body
+
+```json
+{
+  "email": "juan@gmail.com",
+  "password": "123456"
+}
+```
+
+---
+
+## Respuesta exitosa
+
+```json
+{
+  "message": "Login exitoso",
+  "token": "JWT_TOKEN",
+  "user": {
+    "id": 1,
+    "name": "Juan",
+    "email": "juan@gmail.com"
+  }
+}
+```
+
+---
+
+## Respuesta credenciales inválidas
+
+```json
+{
+  "message": "Credenciales inválidas"
+}
+```
+
+---
+
+## Respuesta en caso de error
+
+```json
+{
+  "message": "Error al iniciar sesión"
+}
+```
+
+---
+
+# Perfil autenticado
+
+## Endpoint protegido
+
+```http
+GET /api/profile
+```
+
+### Descripción
+
+Endpoint privado encargado de obtener la información del usuario autenticado mediante token JWT.
+
+La ruta utiliza middleware JWT para restringir el acceso únicamente a usuarios autenticados.
+
+---
+
+## Header requerido
+
+```http
+Authorization: Bearer TOKEN
+```
+
+---
+
+## Respuesta exitosa
+
+```json
+{
+  "message": "Perfil obtenido correctamente.",
+  "user": {
+    "id": 5,
+    "name": "Marlon",
+    "email": "marlon@gmail.com"
+  }
+}
+```
+
+---
+
+## Respuesta sin token
+
+```json
+{
+  "message": "Acceso denegado. Token no proporcionado."
+}
+```
+
+---
+
+## Respuesta token inválido
+
+```json
+{
+  "message": "Token inválido o expirado."
 }
 ```
 

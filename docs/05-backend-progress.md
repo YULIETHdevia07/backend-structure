@@ -280,6 +280,56 @@ Funciones:
 
 ---
 
+## 18. Implementación middleware JWT
+
+Se creó:
+
+```txt
+src/middlewares/auth.middleware.ts
+```
+
+### Funciones implementadas
+
+- Lectura de token desde headers
+- Validación JWT
+- Protección de rutas privadas
+- Verificación de autenticación
+- Manejo de acceso no autorizado
+- Obtención de usuario autenticado desde token
+
+---
+
+## 19. Creación controlador Profile
+
+Se creó:
+
+```txt
+src/controllers/profile.controller.ts
+```
+
+### Funciones implementadas
+
+- Obtener usuario autenticado
+- Consultar usuario mediante Prisma
+- Retornar datos seguros del usuario
+- Validación de usuario autenticado
+- Protección de password
+
+---
+
+## 21. Autenticación protegida funcional
+
+El backend ya permite:
+
+- Login mediante JWT
+- Generación de token
+- Validación de token
+- Acceso seguro a rutas privadas
+- Obtención del usuario autenticado
+- Protección de endpoints mediante middleware
+
+---
+
 # Estado actual backend
 
 Actualmente el proyecto ya cuenta con:
@@ -293,6 +343,11 @@ Actualmente el proyecto ya cuenta con:
 - CRUD básico usuarios  
 - Registro usuarios  
 - Login JWT  
-- Autenticación básica  
+- Middleware JWT  
+- Rutas protegidas  
+- Usuario autenticado  
+- Validación de token  
+- Protección de endpoints privados  
+- Autenticación protegida funcional  
 - Validaciones iniciales  
-- Backend listo para continuar con middleware JWT y rutas protegidas
+- Backend preparado para continuar escalando
