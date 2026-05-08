@@ -181,7 +181,7 @@ Actualmente incluye:
 GET /api/health
 ```
 
-### Respuesta
+### Respuesta exitosa
 
 ```json
 {
@@ -191,17 +191,68 @@ GET /api/health
 
 ---
 
-## Users
+## Obtener usuarios
 
 ```http
 GET /api/users
 ```
 
-### Respuesta
+### Respuesta exitosa
+
+```json
+[
+  {
+    "id": 1,
+    "name": "Juan",
+    "email": "juan@gmail.com"
+  }
+]
+```
+
+---
+
+## Registrar usuario
+
+```http
+POST /api/users/register
+```
+
+### Body
 
 ```json
 {
-  "message": "Lista de usuarios"
+  "name": "Juan",
+  "email": "juan@gmail.com",
+  "password": "123456"
+}
+```
+
+### Respuesta exitosa
+
+```json
+{
+  "message": "Usuario registrado correctamente",
+  "user": {
+    "id": 1,
+    "name": "Juan",
+    "email": "juan@gmail.com"
+  }
+}
+```
+
+### Respuesta si el usuario ya existe
+
+```json
+{
+  "message": "El usuario ya existe"
+}
+```
+
+### Respuesta en caso de error
+
+```json
+{
+  "message": "Error al registrar usuario"
 }
 ```
 

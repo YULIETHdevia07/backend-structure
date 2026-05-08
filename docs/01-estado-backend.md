@@ -175,37 +175,6 @@ Archivo encargado de crear y exportar la instancia de Prisma Client.
 
 ---
 
-# Rutas implementadas
-
-| Método | Endpoint | Descripción |
-|---|---|---|
-| GET | /api/health | Verificación del estado de la API |
-| GET | /api/users | Obtener listado de usuarios |
-
----
-
-# Respuestas actuales
-
-## Health Check
-
-```json
-{
-  "message": "API funcionando correctamente"
-}
-```
-
----
-
-## Users
-
-```json
-{
-  "message": "Lista de usuarios"
-}
-```
-
----
-
 # Variables de entorno
 
 ## Archivo
