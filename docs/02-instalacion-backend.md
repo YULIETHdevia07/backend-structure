@@ -34,6 +34,25 @@ npm install express cors dotenv bcryptjs jsonwebtoken prisma @prisma/client
 | prisma | ORM para manejo de base de datos |
 | @prisma/client | Cliente Prisma para consultas |
 
+
+## Instalación de tipados para Express y Cors
+
+### Comando ejecutado
+
+```bash
+npm install -D @types/express @types/cors
+```
+
+### Descripción
+
+Se instalaron los tipados de TypeScript para:
+
+- Express
+- Cors
+
+Esto permite obtener autocompletado, validaciones y tipado estático durante el desarrollo.
+
+
 ---
 
 # 3. Instalación de dependencias de desarrollo
@@ -74,7 +93,23 @@ Este archivo contiene la configuración de TypeScript para el proyecto.
 
 ---
 
-# 5. Inicialización de Prisma
+#5 . Instalación de TSX
+
+### Comando ejecutado
+
+```bash
+npm install -D tsx
+```
+
+### Descripción
+
+`tsx` permite ejecutar archivos TypeScript directamente sin necesidad de compilar manualmente el proyecto.
+
+También permite reiniciar automáticamente el servidor cuando se detectan cambios en el proyecto.
+
+---
+
+# 6. Inicialización de Prisma
 
 ### Comando ejecutado
 
@@ -99,23 +134,7 @@ Estos archivos permiten configurar Prisma y la conexión con la base de datos.
 
 ---
 
-# 6. Variables de entorno
-
-## Archivo `.env`
-
-Ejemplo de configuración:
-
-```env
-DATABASE_URL="mysql://root:1234@localhost:3306/app_inc"
-
-PORT=4000
-
-JWT_SECRET="miclavesegura"
-```
-
----
-
-# 7. Configuración de Prisma para MySQL
+# 7 Configuración de Prisma para MySQL
 
 ## Archivo `schema.prisma`
 
@@ -138,37 +157,10 @@ Este archivo define:
 
 Este archivo contiene la configuración principal de Prisma y la conexión con MySQL mediante variables de entorno.
 
----
-
-# 9. Configuración de módulos ECMAScript
-
-## Archivo `package.json`
-
-Se modificó:
-
-```json
-"type": "commonjs"
-```
-
-por:
-
-```json
-"type": "module"
-```
-
-### Descripción
-
-Esta configuración permite utilizar la sintaxis moderna de JavaScript:
-
-```ts
-import/export
-```
-
-compatible con Prisma y TypeScript modernos.
 
 ---
 
-# 10. Creación y ejecución de migraciones
+# 9. Creación y ejecución de migraciones
 
 ### Comando ejecutado
 

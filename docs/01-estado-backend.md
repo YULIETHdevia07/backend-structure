@@ -1,6 +1,12 @@
-# Instalación Inicial Backend
+# Documentación Técnica
 
-# 1. Estructura actual del backend
+## Descripción
+
+Documentación técnica inicial del backend desarrollada con Node.js, Express y TypeScript.
+
+---
+
+# Estructura general del backend
 
 ```txt
 backend/
@@ -21,58 +27,223 @@ backend/
 
 ---
 
-# 2. Tecnologías utilizadas
+# Descripción de la estructura
 
-## Backend
+| Archivo / Carpeta | Descripción |
+|---|---|
+| docs | Documentación técnica del proyecto |
+| node_modules | Dependencias instaladas del proyecto |
+| prisma | Configuración de Prisma y migraciones |
+| prisma/migrations | Historial de migraciones de base de datos |
+| prisma/schema.prisma | Definición de modelos y conexión Prisma |
+| src | Código fuente principal del backend |
+| .env | Variables de entorno |
+| .gitignore | Archivos ignorados por Git |
+| package.json | Dependencias y scripts del proyecto |
+| package-lock.json | Control de versiones exactas de dependencias |
+| prisma.config.ts | Configuración personalizada de Prisma |
+| tsconfig.json | Configuración de TypeScript |
+
+---
+
+# Estructura interna de src
+
+Se organizó la estructura principal del backend dentro de la carpeta `src` para separar responsabilidades y mantener una arquitectura escalable.
+
+### Estructura 
+
+```txt
+src/
+│
+├── server.ts
+├── app.ts
+│
+├── config/
+├── controllers/
+├── routes/
+├── services/
+├── middlewares/
+├── interfaces/
+├── utils/
+└── prisma/
+```
+
+---
+
+# Descripción de carpetas
+
+| Carpeta | Descripción |
+|---|---|
+| config | Configuraciones generales del proyecto |
+| controllers | Controladores de las peticiones |
+| routes | Definición de rutas de la API |
+| services | Lógica de negocio |
+| middlewares | Middlewares personalizados |
+| interfaces | Interfaces y tipados TypeScript |
+| utils | Funciones reutilizables |
+| prisma | Configuración y cliente Prisma |
+
+---
+
+# Tecnologías utilizadas
 
 - Node.js
-- Express.js
+- Express
 - TypeScript
 - Prisma ORM
-- JWT
-- bcryptjs
-- Cors
-- Dotenv
-
-## Base de datos
-
 - MySQL
+- TSX
+- Cors
 
 ---
 
-# 3. Configuraciones realizadas
+# Configuración inicial
 
-Actualmente el proyecto ya cuenta con:
+## Instalación de dependencias
 
-- Configuración inicial de Node.js
-- Configuración TypeScript
-- Configuración Prisma ORM
-- Configuración de conexión MySQL
-- Configuración de variables de entorno
-- Estructura profesional del backend
-- Servidor Express inicial
-- Configuración de ejecución en desarrollo con TSX
-- Configuración de módulos ECMAScript
+### Dependencias principales
 
-El backend ya se encuentra preparado para comenzar el desarrollo de:
+```bash
+npm install express cors dotenv
+```
 
-- Modelos Prisma
-- Controladores
-- Servicios
-- Rutas
-- APIs REST
-- Implementar login y registro
-- Autenticación JWT
+### Dependencias de desarrollo
+
+```bash
+npm install -D typescript tsx @types/node @types/express @types/cors
+```
 
 ---
 
-# 4. Estado actual del proyecto
+# Configuración de scripts
 
-Actualmente:
+## package.json
 
-- Prisma ya se encuentra configurado
-- La base de datos MySQL ya fue creada
-- Las migraciones iniciales ya fueron ejecutadas
-- El proyecto backend ya está preparado para comenzar el desarrollo de APIs
+```json
+"scripts": {
+  "dev": "tsx watch src/server.ts"
+}
+```
+
+---
+
+# Ejecución del proyecto
+
+## Comando
+
+```bash
+npm run dev
+```
+
+---
+
+# Arquitectura utilizada
+
+```txt
+Route -> Controller -> Service -> Prisma
+```
+
+---
+
+# Archivos principales
+
+## src/app.ts
+
+Archivo encargado de:
+
+- Inicializar Express
+- Configurar middlewares
+- Configurar CORS
+- Registrar rutas
+- Exportar la aplicación
+
+---
+
+## src/server.ts
+
+Archivo principal encargado de:
+
+- Importar la aplicación
+- Definir puerto
+- Inicializar el servidor
+
+---
+
+## src/prisma/client.ts
+
+Archivo encargado de crear y exportar la instancia de Prisma Client.
+
+---
+
+# Rutas implementadas
+
+| Método | Endpoint | Descripción |
+|---|---|---|
+| GET | /api/health | Verificación del estado de la API |
+| GET | /api/users | Obtener listado de usuarios |
+
+---
+
+# Respuestas actuales
+
+## Health Check
+
+```json
+{
+  "message": "API funcionando correctamente"
+}
+```
+
+---
+
+## Users
+
+```json
+{
+  "message": "Lista de usuarios"
+}
+```
+
+---
+
+# Variables de entorno
+
+## Archivo
+
+```txt
+.env
+```
+
+## Variables
+
+```env
+PORT=3000
+DATABASE_URL=
+JWT_SECRET=
+```
+
+---
+
+# Estado actual del proyecto
+
+| Módulo | Estado |
+|---|---|
+| Configuración Express | Completo |
+| Configuración TypeScript | Completo |
+| Configuración Prisma | Completo |
+| Rutas iniciales | Completo |
+| Controladores iniciales | Completo |
+| Login JWT | Pendiente |
+| Registro de usuarios | Pendiente |
+| Middleware autenticación | Pendiente |
+
+---
+
+# Notas técnicas
+
+- El proyecto utiliza TypeScript para mejorar el tipado y mantenimiento.
+- TSX permite ejecutar archivos TypeScript sin compilación manual.
+- Prisma ORM se utiliza para la conexión y consultas a MySQL.
+- La arquitectura está organizada por responsabilidades para facilitar escalabilidad y mantenimiento.
 
 ---
