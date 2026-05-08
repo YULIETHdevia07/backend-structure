@@ -194,3 +194,40 @@ Your database is now in sync with your schema.
 ```
 
 ---
+
+# 10. Instalación de JsonWebToken
+
+### Comando ejecutado
+
+```bash
+npm install jsonwebtoken
+```
+
+### Descripción
+
+Se instaló la librería `jsonwebtoken`, utilizada para:
+
+- Generar tokens JWT
+- Validar autenticación
+- Manejar sesiones mediante tokens
+
+---
+
+# 11. Instalación de tipados para JsonWebToken
+
+### Comando ejecutado
+
+```bash
+npm install -D @types/jsonwebtoken
+```
+
+### Descripción
+
+Se instalaron los tipados de TypeScript para `jsonwebtoken`.
+
+Esto permite:
+
+- Autocompletado
+- Validación de tipos
+- Mejor soporte en el editor
+- Integración correcta con TypeScript

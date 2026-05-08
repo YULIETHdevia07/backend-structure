@@ -83,57 +83,6 @@ src/
 | utils | Funciones reutilizables |
 | prisma | Configuración y cliente Prisma |
 
----
-
-# Tecnologías utilizadas
-
-- Node.js
-- Express
-- TypeScript
-- Prisma ORM
-- MySQL
-- TSX
-- Cors
-
----
-
-# Configuración inicial
-
-## Instalación de dependencias
-
-### Dependencias principales
-
-```bash
-npm install express cors dotenv
-```
-
-### Dependencias de desarrollo
-
-```bash
-npm install -D typescript tsx @types/node @types/express @types/cors
-```
-
----
-
-# Configuración de scripts
-
-## package.json
-
-```json
-"scripts": {
-  "dev": "tsx watch src/server.ts"
-}
-```
-
----
-
-# Ejecución del proyecto
-
-## Comando
-
-```bash
-npm run dev
-```
 
 ---
 
@@ -191,6 +140,14 @@ DATABASE_URL=
 JWT_SECRET=
 ```
 
+## Descripción
+
+| Variable | Descripción |
+|---|---|
+| PORT | Puerto donde se ejecuta el backend |
+| DATABASE_URL | URL de conexión a MySQL utilizada por Prisma |
+| JWT_SECRET | Clave secreta utilizada para generar y validar tokens JWT |
+
 ---
 
 # Estado actual del proyecto
@@ -202,8 +159,8 @@ JWT_SECRET=
 | Configuración Prisma | Completo |
 | Rutas iniciales | Completo |
 | Controladores iniciales | Completo |
-| Login JWT | Pendiente |
-| Registro de usuarios | Pendiente |
+| Login JWT | Completo |
+| Registro de usuarios | Completado |
 | Middleware autenticación | Pendiente |
 
 ---
