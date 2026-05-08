@@ -65,7 +65,6 @@ src/
 ├── middlewares/
 ├── interfaces/
 ├── utils/
-└── prisma/
 ```
 
 ---
@@ -81,7 +80,6 @@ src/
 | middlewares | Middlewares personalizados |
 | interfaces | Interfaces y tipados TypeScript |
 | utils | Funciones reutilizables |
-| prisma | Configuración y cliente Prisma |
 
 
 ---
